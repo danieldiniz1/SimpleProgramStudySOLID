@@ -6,5 +6,5 @@ public enum Cargo {
 	ANALISTA,
 	ESPECIALISTA,
 	GERENTE;
-
+//ajustar o enum para a boa prática aprendida
 }
