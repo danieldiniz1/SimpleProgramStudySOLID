@@ -1,29 +1,23 @@
 package br.com.alura.rh.service;
 
-import br.com.alura.rh.ValidacaoException;
 import br.com.alura.rh.model.Funcionario;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.List;
 
 public class ReajusteService {
 
-    private String reajusteMaximo;
+    private List<ValidacaoReajuste> validacoes;
 
-    public String getReajusteMaximo() {
-        return reajusteMaximo;
-    }
-
-    public void setReajusteMaximo(String reajusteMaximo) {
-        this.reajusteMaximo = reajusteMaximo;
+    public ReajusteService(List<ValidacaoReajuste> validacoes) {
+        this.validacoes = validacoes;
     }
 
     public void reajustarSalario(Funcionario funcionario, BigDecimal aumento){
-        BigDecimal percentualReajuste = aumento.divide(funcionario.getSalario(), RoundingMode.HALF_UP);
-        if (percentualReajuste.compareTo(new BigDecimal(this.reajusteMaximo))>0){
-            throw new ValidacaoException("Reajuste não pode ser superior a " + this.reajusteMaximo + " %");
-        }
+        validacoes.forEach(v -> v.validar(funcionario, aumento));
         BigDecimal salarioReajustado = funcionario.getSalario().add(aumento);
         funcionario.atualizarSalario(salarioReajustado);
-    }
+        }
+
+
 }
