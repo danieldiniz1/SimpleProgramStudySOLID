@@ -1,8 +1,8 @@
-package br.com.alura.rh.service.implement;
+package br.com.alura.rh.service.reajuste.implement;
 
 import br.com.alura.rh.ValidacaoException;
 import br.com.alura.rh.model.Funcionario;
-import br.com.alura.rh.service.ValidacaoReajuste;
+import br.com.alura.rh.service.reajuste.ValidacaoReajuste;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

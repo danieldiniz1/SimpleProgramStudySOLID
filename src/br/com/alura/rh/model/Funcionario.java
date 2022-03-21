@@ -66,4 +66,8 @@ public class Funcionario {
 		this.salario = salarioReajustado;
 		this.dataUltimoReajuste = LocalDate.now();
 	}
+
+    public void promover(Cargo novoCargo) {
+		this.cargo = novoCargo;
+    }
 }
